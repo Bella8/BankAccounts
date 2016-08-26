@@ -5,7 +5,7 @@ module Bank
     MIMINUM = 0
     attr_accessor :balance, :id, :min #,:open_date
     def initialize(id, balance)
-      # wave two
+      # # wave two
       # def initialize(id, balance, open_date)
 
       @id = id
@@ -41,26 +41,26 @@ module Bank
     end
 
     #  Wave two
-    # def self.all
-    #   account_info = []
-    #     CSV.read('support/accounts.csv').each do |line|
-    #       id = line[0].to_i
-    #       balance = line[1].to_i
-    #       open_date = line[2].to_i
-    #       #arrays of arrays
-    #       account_info<< self.new(id, balance, open_date)
-    #     end
-    #   return account_info
-    # end
+    def self.all
+      account_info = []
+      CSV.read('support/accounts.csv').each do |line|
+        id = line[0].to_i
+        balance = line[1].to_i
+        open_date = line[2].to_i
+        #arrays of arrays
+        account_info<< self.new(id, balance, open_date)
+      end
+      return account_info
+    end
 
-    # def self.find(id)
-    #   self.all.each do |line|
-    #     #id is at zero index
-    #     if line.id == id
-    #       return line
-    #     end
-    #   end
-    # end
+    def self.find(id)
+      self.all.each do |line|
+        #id is at zero index
+        if line.id == id
+          return line
+        end
+      end
+    end
   end
 end
 
@@ -72,13 +72,12 @@ end
 # puts accounts
 
 
-#test for Wave one
-# c=  Bank::Account.new()
 
 # Tests
 # c = Bank::Account.new("123", 9 )
-# c = Bank::Account.new("123", 8 ) # Set to see an error message of the balence been to low
-# c = Bank::Account.new("123", 0 )    #Exception failed message
+# # c = Bank::Account.new("123", 8 ) # Set to see an error message of the balence been to low
+# # c = Bank::Account.new("123", 0 )    #Exception failed message
 # puts c.withdraw_money(9)
+# puts c.withdraw_money(8)
 # puts c.current_balance
 # puts c.deposit_money(40)

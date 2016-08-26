@@ -3,7 +3,7 @@ require_relative'bank_account.rb'
 class CheckingAccount < Bank::Account
 
   def initialize(id, balance)
-    super(id, balance)
+    super
     @check_number = 0
   end
 
@@ -39,6 +39,7 @@ end
 # Tests
 c = CheckingAccount.new("123", 110 )
 puts c.withdraw_money(10)  # the withdraw with out the check
+# puts c.withdraw_money(112) #gives an error message
 puts c.withdraw_using_check(10)
 puts c.withdraw_using_check(10)
 puts c.withdraw_using_check(10)
@@ -46,10 +47,12 @@ puts c.withdraw_using_check(10)
 puts c.withdraw_using_check(10)
 puts c.withdraw_using_check(10)
 puts c.withdraw_using_check(10)
-puts c.reset_checks  # reseting check number to zero
+puts c.reset_checks  ## reseting check number to zero
+
 puts c.withdraw_using_check(10)
 puts c.withdraw_using_check(10)
-puts c.withdraw_using_check(14) # Gives you an error message because its more
-                                #  the minumum amount
-# puts c.withdraw_using_check(11) # No error the exact amount.
+# puts c.withdraw_using_check(14) ## Gives you an error message because its more
+##the minumum amount
+puts c.withdraw_using_check(11) # No error the exact amount.
 # puts c.withdraw_using_check(10)
+puts c.deposit_money(10)
